@@ -3,3 +3,6 @@ title: "My Website"
 ---
 
 Hello, Website!
+
+
+<img src="Adriano.jpeg" alt="Smiley face" height="800" width="600">
