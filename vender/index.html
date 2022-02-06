@@ -1,8 +1,211 @@
 <!DOCTYPE html>
 <html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<style>
+.product-filter {
+  display: flex;
+}
+
+.product-filter h1 {
+  flex-grow: 1;
+}
+
+.hidden{ display: none; }
+.flex{ display: flex; }
+
+.collection-button {
+  display: flex;
+  flex-direction: row;
+}
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+.product-card {
+padding: 1%;
+  flex-grow: 0.2;
+  flex-basis: 20%;
+  flex-direction: column;
+  display: flex; /* so child elements can use flexbox stuff too! */
+  border-color: #f7f7f7;
+  border-style: solid;
+  border-width: 0 0 1px;
+  font-family: Karla, sans-serif;
+  
+
+}
+.product-card h5{
+line-height: 1;
+}
+.product-card h6{
+color:#666666;
+padding: 0px;
+line-height: 1;
+}
+.product-card h7{
+line-height: 1;
+}
+.product-image {
+  display: flex;
+  margin-top: auto;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-image img {
+  margin-top: auto;
+  max-width: 50%;
+  align-items: center;
+}
+
+.product-info {
+  margin-top: auto;
+  text-align: center;
+}
+</style>
+
+
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-<img src="img/arp_01.jpeg"></img>
+
+
+<nav class="product-filter">
+
+
+    <div class="collection-button" id="myBtnContainer">
+		<button class="btn active" onclick="hideProducts('all')"> Mostrar todos</button>
+		<button class="btn" onclick="hideProducts('cozinha')"> Cozinha</button>
+		<button class="btn" onclick="hideProducts('lavanderia')"> Lavanderia</button>
+		<button class="btn" onclick="hideProducts('sala')"> Sala</button>
+		<button class="btn" onclick="hideProducts('eletronicos')"> Eletronicos</button>
+    </div>
+
+</nav>
+
+<section class="products">
+
+  <!-- It's likely you'll need to link the card somewhere. You could add a button in the info, link the titles, or even wrap the entire card in an <a href="..."> -->
+
+
+  <div class="product-card sala">
+    <div class="product-image">
+      <img src="img/arp_01.jpeg">
+    </div>
+    <div class="product-info">
+      <h5>Ar condicionado portatil</h5>
+	  <h6>Olimpia Splendid 12.000 BTU quente/frio 110V</h6>
+	  <h6>Ano: 2020</h6>
+      <h5>R$ 2.500,00</h5>
+    </div>
+  </div>
+
+  <div class="product-card cozinha">
+    <div class="product-image">
+      <img src="">
+    </div>
+    <div class="product-info">
+      <h5>Geladeira</h5>
+	  <h6> Panasonic Inverter Frost Free 2P NR-BB53PV3XA</h6>
+	  <h6>Ano: 2018</h6>
+      <h5>R$ xxxxx</h5>
+    </div>
+  </div>
+  
+    <div class="product-card cozinha">
+    <div class="product-image">
+      <img src="">
+    </div>
+    <div class="product-info">
+      <h5>Fogão</h5>
+	  <h6>5 bocas 76MDX com 2 fornos (1 elétrico)</h6>
+	  <h6>Ano: 2018</h6>
+      <h5>R$ xxxxx</h5>
+    </div>
+  </div>
+  
+     <div class="product-card lavanderia">
+    <div class="product-image">
+      <img src="">
+    </div>
+    <div class="product-info">
+      <h5>Lavadora e secadora</h5>
+	  <h6>Samsung Inverter 11KG6KG IX 1 WD11J6410AX/AZ</h6>
+	  <h6>Ano: 2018</h6>
+      <h5>R$ xxxxx</h5>
+    </div>
+  </div>
+  
+    <div class="product-card cozinha">
+    <div class="product-image">
+      <img src="">
+    </div>
+    <div class="product-info">
+      <h5>Microondas</h5>
+	  <h6>Electrolux ME41X 31L</h6>
+	  <h6>Ano: 2018</h6>
+      <h5>R$ xxxxx</h5>
+    </div>
+  </div>
+  
+      <div class="product-card cozinha">
+    <div class="product-image">
+      <img src="">
+    </div>
+    <div class="product-info">
+      <h5>Sofa Cama</h5>
+	  <h6>flip c/ molas ensacadas linha C20 TE</h6>
+	  <h6>Ano: 2019</h6>
+      <h5>R$ xxxxx</h5>
+    </div>
+  </div>
+  
+     <div class="product-card eletronicos">
+    <div class="product-image">
+      <img src="">
+    </div>
+    <div class="product-info">
+      <h5>Monitor</h5>
+	  <h6>Led Samsung 27'' LC27F390FHLMZD</h6>
+	  <h6>Ano: 2020</h6>
+      <h5>R$ xxxxx</h5>
+    </div>
+  </div>
+   
+  
+  <!-- more products -->
+
+</section>
+
+
+<script>
+function hideProducts(c){
+var x, i;
+let text1 = "product-card ";
+x = document.getElementsByClassName("product-card")
+if (c == "all") c = "";
+  for (i = 0; i < x.length; i++) {
+  x[i].style.display="none";
+  if (x[i].className.indexOf(c) > -1) x[i].style.display="flex";
+  }
+}
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+//var btns = btnContainer.getElementsByClassName("btn");
+var btns = btnContainer.children;
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
+
 </body>
 </html>
