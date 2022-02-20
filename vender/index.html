@@ -1,211 +1,151 @@
-<!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
+<script src="https://unpkg.com/vue@3"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <style>
-.product-filter {
-  display: flex;
-}
 
-.product-filter h1 {
-  flex-grow: 1;
-}
 
-.hidden{ display: none; }
-.flex{ display: flex; }
-
-.collection-button {
-  display: flex;
-  flex-direction: row;
-}
-.products {
-  display: flex;
-  flex-wrap: wrap;
-  
-}
-
-.product-card {
-padding: 1%;
-  flex-grow: 0.2;
-  flex-basis: 20%;
-  flex-direction: column;
-  display: flex; /* so child elements can use flexbox stuff too! */
-  border-color: #f7f7f7;
-  border-style: solid;
-  border-width: 0 0 1px;
-  font-family: Karla, sans-serif;
-  
-
-}
-.product-card h5{
+card-body h5{
 line-height: 1;
 }
-.product-card h6{
+card-body h6{
 color:#666666;
 padding: 0px;
 line-height: 1;
 }
-.product-card h7{
+card-body h7{
 line-height: 1;
 }
-.product-image {
-  display: flex;
-  margin-top: auto;
-  align-items: center;
-  justify-content: center;
+.bd-highlight {
+background-color: rgba(86,61,124,0.15);
+border: 1px solid rgba(86,61,124,0.15);
 }
-
-.product-image img {
-  margin-top: auto;
-  max-width: 50%;
-  align-items: center;
+.card-group .card {
+min-width: 20%;
+max-width: 25%;
 }
-
-.product-info {
+.card-text {
   margin-top: auto;
   text-align: center;
+  color:#666666;
 }
 </style>
-
-
 </head>
 <body>
 
 
-<nav class="product-filter">
+<div id="app">
 
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+<script>
 
-    <div class="collection-button" id="myBtnContainer">
-		<button class="btn active" onclick="hideProducts('all')"> Mostrar todos</button>
-		<button class="btn" onclick="hideProducts('cozinha')"> Cozinha</button>
-		<button class="btn" onclick="hideProducts('lavanderia')"> Lavanderia</button>
-		<button class="btn" onclick="hideProducts('sala')"> Sala</button>
-		<button class="btn" onclick="hideProducts('eletronicos')"> Eletronicos</button>
-    </div>
+let example1 = Vue.createApp({
+  data() {
+      return {
+    code: "teste",
+    mostrar: "true",
+    items: [{"produto":"Fogão 5 bocas Electrolux","codigo":"fog01","classe":"cozinha","valor":"R$2,000.00","ano":2018,"descricao":"5 bocas  c/  2 fornos (maior a gás e menor elétrico) Modelo 76MDX","mostrar":"true"},{"produto":"Refrigerador Inverter Panasonic","codigo":"ref01","classe":"cozinha","valor":"R$3,000.00","ano":2018,"descricao":"Inverter Frost Free 2 portas com freezer Modelo NR-BB53PV3XA","mostrar":"true"},{"produto":"Cadeira Gamer DXRacer King","codigo":"gam01","classe":"sala","valor":"R$1,800.00","ano":2020,"descricao":"Cadeira Gamer totalmente regulável. O couro possui alguns arranhões.","mostrar":"true"},{"produto":"Microondas Electrolux","codigo":"mic01","classe":"cozinha","valor":"R$800.00","ano":2018,"descricao":" Com grill. 31 litros Modelo ME41X","mostrar":"true"},{"produto":"Lava e Seca Samsung","codigo":"lav01","classe":"lavanderia","valor":"R$2,900.00","ano":2018,"descricao":" Inverter 11KG e 6KG Modelo WD11J6410AX/AZ","mostrar":"true"},{"produto":"Aspirador de pó vertical 18V Electrolux","codigo":"asp01","classe":"sala","valor":"R$400.00","ano":2021,"descricao":"Aspirador de pó vertical sem fio com menos de 1 ano de uso","mostrar":"true"},{"produto":"Mesa de apoio mills","codigo":"mes01","classe":"sala","valor":"R$400.00","ano":2019,"descricao":"Mesa pequena p/ refeição no sofá ou cama Dimensões 35 cm x 35 cm x 55 cm","mostrar":"true"},{"produto":"Escrivaninha Arizona","codigo":"mes02","classe":"sala","valor":"R$600.00","ano":2019,"descricao":"Escrivaninha larga Dimensões 150 cm x 60 cm  x 75 cm ","mostrar":"true"},{"produto":"Futtons","codigo":"fut01","classe":"sala","valor":"2 por R$ 1200.00 ou cada 1 por R$800.00","ano":2018,"descricao":"Kit de futtons da Futton Company. Cada kit inclui dois futtons grandes, 1 futton pequeno e 1 base de pallet","mostrar":"true"},{"produto":"Mesa de jantar","codigo":"mes03","classe":"sala","valor":"R$700.00","ano":2019,"descricao":"Feita com madeira de demolição Dimensões 150 cm (215 cm aberta) x 80 cm x 80 cm","mostrar":"true"},{"produto":"Monitor curvo Samsung 27 polegadas","codigo":"mon01","classe":"eletronico","valor":"R$800.00","ano":2020,"descricao":"Modelo LC27F390FHLMZD","mostrar":"true"},{"produto":"Monitor Dell 22 polegadas","codigo":"mon02","classe":"eletronico","valor":"R$800.00","ano":2021,"descricao":"Três entradas USB para acessórios (mouse, teclado, etc), inclui cabo HDMI, cabo USB-C e cabo Display-Port (possui todas as entradas) Modelo P2219H","mostrar":"true"},{"produto":"Hack","codigo":"hak01","classe":"sala","valor":"R$400.00","ano":2019,"descricao":"Feito sob medida com duas portas deslizantes e rodinhas (fácil para mover de lugar). Dimensões 160 cm x 40 cm x 65 cm","mostrar":"true"},{"produto":"Liquidificador Electrolux","codigo":"liq01","classe":"cozinha","valor":"R$350.00","ano":2018,"descricao":"Copo de vidro. Linha Expressionist","mostrar":"true"},{"produto":"Cafeteira Electrolux","codigo":"caf01","classe":"cozinha","valor":"R$350.00","ano":2021,"descricao":"Mantém café aquecido. Linha Expressionist","mostrar":"true"},{"produto":"Chaleira elétrica Electrolux","codigo":"cha01","classe":"cozinha","valor":"R$250.00","ano":2019,"descricao":"Água fervendo em poucos minutos. Linha Expressionist","mostrar":"true"},{"produto":"Torradeira Electrolux","codigo":"tor01","classe":"cozinha","valor":"R$100.00","ano":2020,"descricao":"Linha Expressionist","mostrar":"true"},{"produto":"Purificador de água Electrolux ","codigo":"puf01","classe":"cozinha","valor":"R$500.00","ano":2021,"descricao":"Água natural, fria ou gelada","mostrar":"true"}]
+    }
+  },
+  methods: {
+    setModal(event) {
+        this.code = event.currentTarget.id;
+        },
+    mostrarItem(event) {
+        criterio = event.currentTarget.id;
+        console.log(criterio);
+        for(i=0;i<this.items.length;i++){
+            this.items[i].mostrar=true;
+            if(this.items[i].classe!=criterio){
+                this.items[i].mostrar=false
+            }
+            if(criterio=="tudo"){
+                this.items[i].mostrar=true;
+            }
+        }
+    }
+},
+  template: `
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+<button class="btn" id="tudo" style="background-color:transparent;color: #FFFFFF" v-on:click="mostrarItem" ><strong>Selecione um filtro:</strong></button>
+<button class="btn" id="tudo" style="background-color:transparent;color: #FFFFFF" v-on:click="mostrarItem" ><strong>Mostrar Tudo</strong></button>
+<button class="btn" id="cozinha" style="background-color:transparent;color: #FFFFFF"  v-on:click="mostrarItem"><strong>Cozinha</strong></button>
+<button class="btn" id="lavanderia" style="background-color:transparent;color: #FFFFFF" v-on:click="mostrarItem"><strong>Lavanderia</strong></button>
+<button class="btn" id="sala" style="background-color:transparent;color: #FFFFFF" v-on:click="mostrarItem"><strong>Sala e Quarto</strong></button>
+<button class="btn" id="eletronico" style="background-color:transparent;color: #FFFFFF" v-on:click="mostrarItem"><strong>Eletrônicos</strong></button>
 </nav>
 
-<section class="products">
-
-  <!-- It's likely you'll need to link the card somewhere. You could add a button in the info, link the titles, or even wrap the entire card in an <a href="..."> -->
-
-
-  <div class="product-card sala">
-    <div class="product-image">
-      <img src="img/arp_01.jpeg">
-    </div>
-    <div class="product-info">
-      <h5>Ar condicionado portatil</h5>
-	  <h6>Olimpia Splendid 12.000 BTU quente/frio 110V</h6>
-	  <h6>Ano: 2020</h6>
-      <h5>R$ 2.500,00</h5>
-    </div>
+  <div class="card-group gap-3" id="cardsgroup">
+  <div v-for="item in items" v-bind:class="'card p-3 '+item.classe" v-show="item.mostrar">
+  <p class="card-text"><strong>{{ item.produto }}</strong></p>
+  <img class="card-img-top" v-bind:src="'/img/'+ item.codigo +'_01.jpeg'">
+  <p class="card-text">{{ item.descricao }}</p>
+  <p class="card-text"><strong>Valor: {{ item.valor }}</strong></p>
+  <p class="card-text">Ano: {{ item.ano }}</p>
+  <button class="btn btn-primary" v-bind:id=item.codigo data-bs-toggle="modal" :data-bs-target="'#exampleModal'" v-on:click="setModal($event)">Mais fotos</button>
+  </div>
   </div>
 
-  <div class="product-card cozinha">
-    <div class="product-image">
-      <img src="">
+    <div class="modal fade" :id="'exampleModal'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
-    <div class="product-info">
-      <h5>Geladeira</h5>
-	  <h6> Panasonic Inverter Frost Free 2P NR-BB53PV3XA</h6>
-	  <h6>Ano: 2018</h6>
-      <h5>R$ xxxxx</h5>
+    <div class="modal-body">
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                <img v-bind:src="'/img/'+ code +'_01.jpeg'" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                <img v-bind:src="'/img/'+ code +'_02.jpeg'" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                <img v-bind:src="'/img/'+ code +'_03.jpeg'" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                <img v-bind:src="'/img/'+ code +'_04.jpeg'" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                <img v-bind:src="'/img/'+ code +'_05.jpeg'" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                <img v-bind:src="'/img/'+ code +'_06.jpeg'" class="d-block w-100" alt="...">
+                </div>
+                <div class="carousel-item">
+                <img v-bind:src="'/img/'+ code +'_07.jpeg'" class="d-block w-100" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            </div>
     </div>
-  </div>
-  
-    <div class="product-card cozinha">
-    <div class="product-image">
-      <img src="">
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"  v-on:click="setModal($event)">Close</button>
     </div>
-    <div class="product-info">
-      <h5>Fogão</h5>
-	  <h6>5 bocas 76MDX com 2 fornos (1 elétrico)</h6>
-	  <h6>Ano: 2018</h6>
-      <h5>R$ xxxxx</h5>
     </div>
-  </div>
-  
-     <div class="product-card lavanderia">
-    <div class="product-image">
-      <img src="">
-    </div>
-    <div class="product-info">
-      <h5>Lavadora e secadora</h5>
-	  <h6>Samsung Inverter 11KG6KG IX 1 WD11J6410AX/AZ</h6>
-	  <h6>Ano: 2018</h6>
-      <h5>R$ xxxxx</h5>
-    </div>
-  </div>
-  
-    <div class="product-card cozinha">
-    <div class="product-image">
-      <img src="">
-    </div>
-    <div class="product-info">
-      <h5>Microondas</h5>
-	  <h6>Electrolux ME41X 31L</h6>
-	  <h6>Ano: 2018</h6>
-      <h5>R$ xxxxx</h5>
-    </div>
-  </div>
-  
-      <div class="product-card cozinha">
-    <div class="product-image">
-      <img src="">
-    </div>
-    <div class="product-info">
-      <h5>Sofa Cama</h5>
-	  <h6>flip c/ molas ensacadas linha C20 TE</h6>
-	  <h6>Ano: 2019</h6>
-      <h5>R$ xxxxx</h5>
-    </div>
-  </div>
-  
-     <div class="product-card eletronicos">
-    <div class="product-image">
-      <img src="">
-    </div>
-    <div class="product-info">
-      <h5>Monitor</h5>
-	  <h6>Led Samsung 27'' LC27F390FHLMZD</h6>
-	  <h6>Ano: 2020</h6>
-      <h5>R$ xxxxx</h5>
-    </div>
-  </div>
-   
-  
-  <!-- more products -->
+</div>
+</div>
+  `
+})
+example1.mount("#app")
 
-</section>
-
-
-<script>
-function hideProducts(c){
-var x, i;
-let text1 = "product-card ";
-x = document.getElementsByClassName("product-card")
-if (c == "all") c = "";
-  for (i = 0; i < x.length; i++) {
-  x[i].style.display="none";
-  if (x[i].className.indexOf(c) > -1) x[i].style.display="flex";
-  }
-}
-
-// Add active class to the current button (highlight it)
-var btnContainer = document.getElementById("myBtnContainer");
-//var btns = btnContainer.getElementsByClassName("btn");
-var btns = btnContainer.children;
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function(){
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
 </script>
 
-</body>
 </html>
+
+

@@ -1,0 +1,23 @@
+produto;descricao;codigo;classe;valor;data;ano
+Fogão ;5bocas 76MDX c/  2 fornos (1 elétrico);fog01;cozinha;2682.31;29/11/2018;2018
+Microondas Electrolux; ME41X 31L;mic01;cozinha;825.63;29/11/2018;2018
+Refrigerador Panasonic ;Inverter Frost Free 2P NR-BB53PV3XA;ref01;cozinha;2947.70;29/11/2018;2018
+Lavadora e secadora  Samsung; Inverter 11KG6KG IX 1 WD11J6410AX/AZ;lav01;lavanderia;3832.30;29/11/2018;2018
+Colchão Sankonfort ;La Rochelle 1.38x1.88x0.27 ;col01;sala;1270.00;12/12/2018;2018
+Box Corano ;Branco Casal;box01;sala;320.00;12/12/2018;2018
+Cadeira Giratoria ELLA ;JM119 COR TAUARI Fx02 T;cad01;sala;751.53;28/05/2019;2019
+Cadeira Giratoria ELLA ;JM119 COR TAUARI Fx01 T;cad01;sala;590.76;28/05/2019;2019
+Colchão Ortobom Liberty ;17 P52;col02;sala;2643.72;29/11/2018;2018
+Sofa Cama flip c/ molas ensacadas; linha C20 TE;sof01;sala;3136.00;11/07/2019;2019
+Cadeira DXRacer; king K186-IWR;cad02;sala;2594.00;16/11/2020;2020
+Mesa de apoio mills;;mes01;sala;758.00;07/12/2019;2019
+Escrivaninha arizona; Medidas 1.50 x 60;mes02;sala;1293.00;07/12/2019;2019
+Futtons;Futton Company;sof02;sala;2800.00;06/12/2018;2018
+Mesa de jantar;Madeira de demolição;mes03;sala;1200.00;24/05/2019;2019
+Escrivaninha branca;Madeira Madeira;mes04;sala;249.50;11/01/2021;2021
+Paletbox Banco Alto;tok stok;cad03;sala;229.90;13/12/2018;2018
+Paletbox Banco Alto;tok stok;cad03;sala;229.90;13/12/2018;2018
+Paletbox Banco Alto;tok stok;cad03;sala;229.90;13/12/2018;2018
+Monitor Led Samsung 27''; LC27F390FHLMZD;mon01;eletronico;1106.81;29/05/2020;2020
+Monitor Dell 22'' ;P2219H;mon02;eletronico;1119.04;26/01/2021;2021
+Hack;Feito sob medida;hak01;sala;700.00;01/01/2019;2019
